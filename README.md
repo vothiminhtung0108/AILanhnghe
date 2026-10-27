@@ -7,7 +7,7 @@ Bản này kết hợp không gian 5 thành phần theo mục 2.1.2 với chức
 - Danh mục 33 nghề, tìm kiếm không dấu, lọc nhóm/trạng thái; 31 gói lộ trình có 155 ví dụ từ nguồn.
 - Gói Mua hàng giữ đủ cấu hình, 24 tình huống, sổ tay/checklist, an toàn, cập nhật/hỗ trợ.
 - Bàn thử việc 6 kịch bản Mua hàng/Giảng dạy có lỗi cài sẵn, sửa lỗi làm thay đổi đầu ra.
-- Bảng giá, giỏ cá nhân/doanh nghiệp, nhóm chỗ sử dụng, nghề chính, tinh chỉnh, công thức ưu đãi và báo giá CSV.
+- Bảng giá, giỏ cá nhân/doanh nghiệp, nhóm chỗ sử dụng, gói Cá nhân/Business/Business Plus, tinh chỉnh 1:1 và báo giá CSV.
 - Đặt mua 3 bước mô phỏng; lịch sử đơn, chỗ dùng mẫu, báo giá mua thêm theo ngày và gia hạn.
 - Ước tính giờ theo đầu việc với các giả định do người dùng chỉnh sửa.
 - Doanh nghiệp: nhân sự mẫu/cảnh báo ngừng dùng, đo trước–sau, kiểm duyệt đầu ra, nhật ký và xuất CSV.
@@ -19,7 +19,15 @@ Các tệp website đặt ngay ở thư mục gốc repository, sẵn cho GitHub
 Trang đầu là index.html; các màn hình dùng hash URL.
 
 ## Giá và trạng thái
-Giá và quy tắc lấy từ assets/reference/tinh-tien.js: gói Mua hàng 690.000 đ/năm; tinh chỉnh cá nhân 800.000 đ/lần; tinh chỉnh doanh nghiệp Mua hàng 3 triệu/lần. Các nghề đang đóng gói dùng giá đề xuất; Giảng dạy chưa có giá. Thuế GTGT chưa chốt trong nguồn nên không tự cộng tỷ lệ. Ưu đãi tối đa 50% mỗi dòng.
+Bảng giá hiện tại đối chiếu ngày 27/10/2026 tại https://ai-lanh-nghe-app.nghoangan-bt96.workers.dev/bang-gia/.
+- Dùng thử 0 đ; theo mô hình nguồn có 5 lượt AI do AI Lành Nghề trả. Bản tĩnh này chỉ có bài thử soạn sẵn, không cấp lượt AI thật.
+- Cá nhân: 690.000 đ/năm; Business: 690.000 đ/người/năm; Business Plus: 990.000 đ/người/năm.
+- Tinh chỉnh 1:1: 800.000 đ/lần, không nhân theo số người. Không tự lặp lại khi gia hạn.
+- Custom doanh nghiệp: 25–80 triệu đ, báo giá riêng theo số quy trình; không tự cộng vào giỏ hàng.
+- Phí AI trả trực tiếp cho nhà cung cấp AI, không nằm trong giá gói hoặc doanh thu của AI Lành Nghề.
+- Nguồn hiện tại chưa công bố chiết khấu hoặc xử lý thuế GTGT, nên không tự giảm giá hoặc thêm tỷ lệ thuế.
+Chỉ Mua hàng có giá trong bộ báo giá hiện tại; các nghề lộ trình không được bán theo giá đề xuất cũ.
+revenue-pricing.js sử dụng bộ số học cũ với cấu hình giá mới; assets/reference/tinh-tien.js được giữ để đối chiếu lịch sử. Đơn cũ giữ nguyên số tiền; giỏ được chuyển sang gói hiện tại và thuê bao mới lưu gói sử dụng. Thuê bao theo phiên bản cũ cần tạo đơn mới để thử vòng đời theo bảng giá mới.
 Nội dung sổ tay và cấu hình vẫn là mẫu rút gọn.
 
 ## Phạm vi demo
@@ -35,5 +43,5 @@ app.js, extended.js, integrated.css, trial-bridge.js: kết nối vào không gi
 Giữ thông tin nguồn trong NGUON_THAM_KHAO.json. Repository nguồn chỉ được đọc và tham khảo, không bị cập nhật.
 
 ## Kiểm tra đã thực hiện
-26/26 kiểm thử bộ tính giá. Kiểm tra trực tiếp tìm nghề không dấu, giỏ doanh nghiệp 40 chỗ (24.840.000 đ), bước xác nhận đơn, gán chỗ, báo giá mua thêm/gia hạn, cổng checklist kiểm duyệt, sửa lỗi VAT, ước tính và số phút sau cao hơn trước. Kiểm tra các trang mới ở màn hình điện thoại không tràn ngang.
-
+8 kiểm thử giá hiện tại tại tests/revenue-pricing.test.js: ba gói, dịch vụ một lần, không áp ưu đãi cũ, nhiều nhóm, mua thêm, gia hạn, chặn nghề chưa niêm yết và bảo toàn đơn cũ. 26 kiểm thử tại tests/pricing.test.js kiểm tra nguyên trạng bộ tính lịch sử, không phải bảng giá công khai hiện tại.
+Chạy: node --test tests/*.test.js

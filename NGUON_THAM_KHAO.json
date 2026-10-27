@@ -7,5 +7,21 @@
     "assets/js/nghe-data.js"
   ],
   "integration": "Giữ 5 thành phần gói nghề, bổ sung khám phá, giỏ hàng, ước tính, thực hành và quản lý doanh nghiệp. Không thay đổi repository tham khảo.",
-  "reference_commit": "317f5a9068129029338b9227632ccb21737f99ea"
+  "reference_commit": "317f5a9068129029338b9227632ccb21737f99ea",
+  "public_pricing": {
+    "url": "https://ai-lanh-nghe-app.nghoangan-bt96.workers.dev/bang-gia/",
+    "observed": "2026-10-27",
+    "subscription": {
+      "personal": 690000,
+      "business_per_person_year": 690000,
+      "business_plus_per_person_year": 990000
+    },
+    "coaching_per_session": 800000,
+    "custom_range": [
+      25000000,
+      80000000
+    ],
+    "ai_fees": "paid directly to AI provider",
+    "discounts": "not published; not automatically applied"
+  }
 }
