@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/annguyen30112301/ai-lanh-nghe",
+  "modules": [
+    "assets/js/tinh-tien.js",
+    "assets/js/dung-thu.js",
+    "assets/js/dung-thu-data.js",
+    "assets/js/nghe-data.js"
+  ],
+  "integration": "Giữ 5 thành phần gói nghề, bổ sung khám phá, giỏ hàng, ước tính, thực hành và quản lý doanh nghiệp. Không thay đổi repository tham khảo.",
+  "reference_commit": "317f5a9068129029338b9227632ccb21737f99ea"
+}
